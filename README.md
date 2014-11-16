@@ -1,7 +1,7 @@
 The case for a unified cryptocurrency toolkit
 =============================================
 
-I've been working with Bitcoin and cryptocurrency in general for about 9 months now, and in that time I've really felt the want for a quality toolkit that is flexible and well documented. Certainly this repository, python-bitcoinlib, is probably the closest I've found. However, the numerous other projects with part way overlapping goals in this space make for a fragmented ecosystem and I believe hinder cryptocurrency adoption by making it less approachable for developers. For example, in the Python realm I know of several projects that achieve very similar goals:
+I've been working with Bitcoin and cryptocurrency in general for about 9 months now, and in that time I've really felt the want for a quality toolkit that is flexible and well documented. Certainly python-bitcoinlib is about the closest I've found. However, the numerous other projects with part way overlapping goals in this space make for a fragmented ecosystem and I believe hinder cryptocurrency adoption by making it less approachable for developers. For example, in the Python realm I know of several projects that achieve very similar goals:
 
 * stratum-mining, probably the most used stratum software uses it's own custom serialization libs.
 * p2pool uses yet another set custom made tools
