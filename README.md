@@ -3,11 +3,11 @@ The case for a unified cryptocurrency toolkit
 
 I've been working with Bitcoin and cryptocurrency in general for about 9 months now, and in that time I've really felt the want for a quality toolkit that is flexible and well documented. Certainly python-bitcoinlib is about the closest I've found. However, the numerous other projects with part way overlapping goals in this space make for a fragmented ecosystem and I believe hinder cryptocurrency adoption by making it less approachable for developers. For example, in the Python realm I know of several projects that achieve very similar goals:
 
-* stratum-mining, probably the most used stratum software uses it's own custom serialization libs.
+* stratum-mining, probably the most used stratum software uses its own custom serialization libs.
 * p2pool uses yet another set custom made tools
-* My own project, powerpool, has globbed together it's own called cryptokit from various sources
+* My own project, powerpool, has globbed together its own called cryptokit from various sources
 * @richardkiss has pycoin and pycoinnet
-* @spesmilo's Electrum uses it's own libraries
+* @spesmilo's Electrum uses its own libraries
 
 And in the non-Python realm I'm not as knowledgeable, but these are what I know of:
 
@@ -49,7 +49,7 @@ Feature Summary
 **Network Generalization**
 
 * Network parameters should be defined in such a way that altcoins that make no innovations on Bitcoin are supported trivially, without modifying the module. pycoin is very close to supporting this, but not quite.
-* Network parameters should be able to define classes that override the default Bitcoin style classes. For instance, if a network encodes it's transactions slightly differently it should be simple to provide a custom Transaction class that drops in seamlessly. IE, any code that references Network specific objects will have to know the network context in order to use the correct object definition.
+* Network parameters should be able to define classes that override the default Bitcoin style classes. For instance, if a network encodes its transactions slightly differently it should be simple to provide a custom Transaction class that drops in seamlessly. IE, any code that references Network specific objects will have to know the network context in order to use the correct object definition.
 * Network context will not be defined globally, as to allow an application to perform actions using multiple networks.
 
 **Wallet Support**
@@ -78,11 +78,11 @@ In order to allow the project to become mainstream, certain efforts should be ma
 Maintainers
 =======================
 
-Ideally I'd like to get the support of a few other developers who have experience in this area and are willing to help either move a project in this direction or create one from scratch. It is also possible that the project could be crowdfunded to an extent, although explaining it's value to cryptocurrency users is a challenge.
+Ideally I'd like to get the support of a few other developers who have experience in this area and are willing to help either move a project in this direction or create one from scratch. It is also possible that the project could be crowdfunded to an extent, although explaining its value to cryptocurrency users is a challenge.
 
 License
 =======================
 
-This is an area that I'm not particularily knowledgable about. I know a lot of the existing project have slightly different licenses, and it's likely this project would end up taking bits and pieces from many diverse projects, so its unclear the problems that might create.
+This is an area that I'm not particularily knowledgable about. I know a lot of the existing project have slightly different licenses, and it's likely this project would end up taking bits and pieces from many diverse projects, so it's unclear the problems that might create.
 
 In general BSD or similar would be preferred over GPL or similar.
