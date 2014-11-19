@@ -52,7 +52,7 @@ community maintained library that satisfies most general use cases. Below is a
 very rough outline of my goals.
 
 Language Choice
-===============
+---------------
 
 I believe that Python makes an excellent choice, given:
 
@@ -71,8 +71,11 @@ While the drawbacks are real, I think the best course of action would be to
 build the library in Python, then slowly port chunks of functionality to a
 lower level library and use them in Python via FFI.
 
-Feature Summary
+Goals
 ===============
+
+Feature Summary
+---------------
 
 **Network Generalization**
 
@@ -105,8 +108,8 @@ Feature Summary
   implements (for instance calculating fee amounts, or generating block
   templates)
 
-Community Support Goals
-=======================
+Community Support
+-----------------------
 
 In order to allow the project to become mainstream, certain efforts should be
 made to facilitate adoption and contribution.
@@ -123,8 +126,75 @@ made to facilitate adoption and contribution.
 * Positive general attitude towards contributors/users, and a goal of making
   comprehensible documentation.
 
-Maintainers
+Proposed Implementation
 =======================
+
+*Note*: These ideas still all very green, and very open to suggestions and changes.
+
+Module Layout
+-----------------
+
+* String handling and serialization - provide generic wrapper classes for all
+  data structures and handle python2/3 compatibility
+* ECDSA - compartmentalize all ECDSA implementations. Probably do some magic
+  like [this](https://github.com/gorakhargosh/watchdog/blob/master/src/watchdog/observers/__init__.py).
+* cli - Provide tbd cli for the toolkit
+* Network specific data structures
+    * Generic structure logic - validation, fee calculation, etc
+    * Network messages
+    * Network serialization
+    * Key handling
+    * Core client disk serialization (same as net, but logical separation is
+      worth the minimal effort)
+* Wallet management (not core wallets)
+* Network definitions - A wrapper class that specifies all classes to use for a
+  specific network
+
+Rough Timeline
+-----------------
+
+* Design a network parameter system that meets the goals. That is, more
+  concretely:
+    * A user can define their own network config outside of the module
+    * "Active" network configs are not global (currently an issue in
+      python-bitcoinlib). A few possible ways to implement this.
+    * Network definitions specify all various data structures and parameters.
+      Networks with same data structures as Bitcoin (IE, Litecoin) will simply
+      use the Bitcoin data structures (IE class will inherit from
+      Bitcoin).
+* Decide on uniform serialization and string handling. python-bitcoinlib and
+  pycoin's are similar, but not quite the same.
+* Decide on coding standards, and adapt all incoming code to said standards.
+* Merge featuresets of richardkiss/pycoin and petertodd/python-bitcoinlib
+    * Migrate all serialization to selected system
+    * Abstract use of network parameters
+    * Merge tests
+* Add testing, coverage, docs.
+* Write/adapt a blockchain class. Possibly similar to SAX XML parsing.
+* Write use case examples, improve documentation
+
+Community Support
+-----------------
+
+* Automated testing performed by TravisCI. Prevent merging breaking
+  contributions.
+* Coverage checking with Coveralls. New features should have at least basic
+  coverage, and keeping an eye on overall coverage is made much easier.
+* ReadTheDocs for documentation hosting. When properly setup
+  it shouldn't really need to be touched.
+* Encourage users to add examples and documentation when possible, lightening
+  the load on maintainers.
+* Coding style enforced with PyLint run as part of the test suite. Pick a
+  sparse set of rules to be enforced, but have them enforced absolutely.
+  (NOTE: This is what I'm least sure about, since absolute enforcement is a bit
+  strong, but otherwise I think it'll just be ignored. There's no service like
+  Coveralls for PyLint.)
+
+Misc
+=======================
+
+Maintainers
+-----------------------
 
 Ideally I'd like to get the support of a few other developers who have
 experience in this area and are willing to help either move a project in this
@@ -133,7 +203,7 @@ could be crowdfunded to an extent, although explaining its value to
 cryptocurrency users is a challenge.
 
 License
-=======================
+-----------------------
 
 This is an area that I'm not particularily knowledgable about. I know a lot of
 the existing project have slightly different licenses, and it's likely this
