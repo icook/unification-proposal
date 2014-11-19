@@ -1,4 +1,4 @@
-The case for a unified cryptocurrency toolkit
+﻿The case for a unified cryptocurrency toolkit
 =============================================
 
 I've been working with Bitcoin and cryptocurrency in general for about 9 months
@@ -13,7 +13,7 @@ similar goals:
 * stratum-mining, probably the most used stratum software uses its own custom
   serialization libs.
 * p2pool uses yet another set custom made tools
-* My own project, powerpool, has globbed together its own called cryptokit from
+* My own project, powerpool, has globed together its own called cryptokit from
   various sources
 * @richardkiss has pycoin and pycoinnet
 * @spesmilo's Electrum uses its own libraries
@@ -25,7 +25,7 @@ of:
 * @conformal GoLang libraries they built
 * bitcoinj
 
-I believe that establishing a library of sufficient flexability and
+I believe that establishing a library of sufficient flexibility and
 documentation would gradually lead to a unification of effort among developers
 in this space, leading to a defacto general purpose toolkit. I think this is a
 really important foundation for spreading cryptocurrency adoption, since
@@ -45,7 +45,7 @@ libraries are meeting each use case.
   do something that is a significant departure from Core. (python-bitcoinlib,
   pycoinnet, electrum)
 * Reasearch and Analysis. These needs are wide and varied, but something like
-  python-bitcoinlib ususually covers it well.
+  python-bitcoinlib unusually covers it well.
 
 So I would like make an RFC of sorts, attempting to define requirements for a
 community maintained library that satisfies most general use cases. Below is a
@@ -57,7 +57,7 @@ Language Choice
 I believe that Python makes an excellent choice, given:
 
 * Wide adoption/use in many current crypto projects.
-* Good cross platofrm capabilities.
+* Good cross platform capabilities.
 * Good knowledge base across proposed maintainers of this project.
 
 The main drawbacks include:
@@ -65,7 +65,7 @@ The main drawbacks include:
 * Cannot be used as a library in other languages like a lower level language
   such as Rust, C/C++.
 * Poor concurrency support.
-* Headaches with 2.7->3 bytes/strings/unicode.
+* Headaches with 2.7->3 bytes/strings/Unicode.
 
 While the drawbacks are real, I think the best course of action would be to
 build the library in Python, then slowly port chunks of functionality to a
@@ -138,7 +138,7 @@ Module Layout
   data structures and handle python2/3 compatibility
 * ECDSA - compartmentalize all ECDSA implementations. Probably do some magic
   like [this](https://github.com/gorakhargosh/watchdog/blob/master/src/watchdog/observers/__init__.py).
-* cli - Provide tbd cli for the toolkit
+* cli - Provide a cli for the toolkit
 * Network specific data structures
     * Generic structure logic - validation, fee calculation, etc
     * Network messages
@@ -156,7 +156,7 @@ Rough Timeline
 * Design a network parameter system that meets the goals. That is, more
   concretely:
     * A user can define their own network config outside of the module
-    * "Active" network configs are not global (currently an issue in
+    * "Active" network configurations are not global (currently an issue in
       python-bitcoinlib). A few possible ways to implement this.
     * Network definitions specify all various data structures and parameters.
       Networks with same data structures as Bitcoin (IE, Litecoin) will simply
@@ -205,7 +205,7 @@ cryptocurrency users is a challenge.
 License
 -----------------------
 
-This is an area that I'm not particularily knowledgable about. I know a lot of
+This is an area that I'm not particularly knowledgeable about. I know a lot of
 the existing project have slightly different licenses, and it's likely this
 project would end up taking bits and pieces from many diverse projects, so it's
 unclear the problems that might create.
