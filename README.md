@@ -70,6 +70,7 @@ Encouraging contribution
 Steps that should be taken to make contribution as easy as possible.
 
 **Quality Assurance**
+
 The maintainers job is essentially maintaining quality of the code base which
 involves reviewing contributions. The easier this is the more quickly
 contributions will get accepted, and thus the more likely people are to
@@ -83,11 +84,13 @@ Main tasks included
 * Maintaining uniform coding standards (Manually with PyLint or Flake8)
 
 **Welcoming Attitude**
+
 Open source can be rough sometimes, depending on the culture of the project.
 Ideally the maintainers should be open and supporting, finding more eloquent
 ways to tell someone "this is shit".
 
 **Contributors List**
+
 Thanking contributors in release announcements and adding them to contributors
 docs will help make contributors feel welcomed and appreciated.
 
@@ -98,25 +101,30 @@ The easier a library is to use, the more people will use it.
 > “If a new user has a bad time, it’s a bug” - Logstash maintainer Jordan Sissel
 
 **Documentation**
+
 The docs should be thorough and cover common use cases well. Actively
 requesting documentation contributions will help. ReadTheDocs has an edit on
 Github button which is great.
 
 **Organization**
+
 Having a logical project layout makes exploring the code much more
 straightforward. This isn't a problem for small projects, but becomes
 increasingly problematic as projects grow. Refactoring has a high (end user)
 cost, so a bit of though early on helps prevent problems down the road.
 
 **Coding Standards**
+
 Readability is important for a project that expects lots of eyes on the
 code base. Establishing and sticking to standards helps a lot. How to do this is
 well covered in other places, so I won't dwell on it here.
 
 **Answer Questions**
+
 IRC, mailing lists, or Github issues.
 
 **API**
+
 Exposing a logical and well thought out API makes using the package pleasant,
 leading to greater adoption. Flask, Requests, etc are good examples. Actually
 building things with the library helps highlight the pain points.
