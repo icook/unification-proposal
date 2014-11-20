@@ -71,12 +71,11 @@ Steps that should be taken to make contribution as easy as possible.
 
 ### Quality Assurance
 
-The maintainers job is essentially maintaining quality of the code base which
-involves reviewing contributions. The easier this is the more quickly
-contributions will get accepted, and thus the more likely people are to
-contribute again. Or on the flip side, if review isn't sufficient (sloppy) then
-the quality of code base will decline and it's user base (health) will decline
-as well.
+One of the maintainers jobs is reviewing contributions. The easier this is the
+more quickly contributions will get accepted, and thus the more likely people
+are to contribute again. Or on the flip side, if review isn't sufficient
+(sloppy) then the quality of code base will decline and it's user base (health)
+will decline as well.
 
 Main tasks included
 * Making new code doesn't break things (Automated testing with TravisCI)
