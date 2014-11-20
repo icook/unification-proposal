@@ -49,7 +49,7 @@ libraries are meeting each use case.
 
 So I would like make an RFC of sorts, attempting to define requirements for a
 community maintained library that satisfies most general use cases. Below is a
-very rough outline of my goals.
+very rough outline of my goals and a possible implementation.
 
 Goals
 ===============
@@ -131,8 +131,9 @@ building things with the library helps highlight the pain points.
 Proposed Implementation
 =======================
 
-*Note*: These ideas still all very green, and very open to suggestions and
-changes. This is basically a brain dump, and an ideal *end point*.
+> ### Note
+> These ideas still all very green, and open to suggestions and changes.  This
+> is basically a brain dump, and an ideal *end point*.
 
 Feature Summary
 ---------------
@@ -186,6 +187,18 @@ Module Layout
 * Wallet management (not core wallets)
 * Network definitions - A wrapper class that specifies all classes to use for a
   specific network. [POC here](https://github.com/icook/cckit)
+
+Packaging
+-----------------
+Since the featureset and module layout is significantly different than any
+currently maintained project creation of a new project that brings together
+features from other packages seems most logical.
+
+Naming
+-----------------
+In order to avoid confusion with other projects that exist a completely
+new name would be desireable. cckit is the only decent name I've come up with.
+Short for (c)rypto(c)urrency (kit) it's short and unused.
 
 Rough Timeline
 -----------------
