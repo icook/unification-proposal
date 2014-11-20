@@ -31,22 +31,6 @@ in this space, leading to a defacto general purpose toolkit. I think this is a
 really important foundation for spreading cryptocurrency adoption, since
 developers make applications, and in turn more applications bring more users.
 
-Below I've attempted to identify the major use cases, and roughly which
-libraries are meeting each use case.
-
-* Wallet Management. For increased security it's a logical step to store
-  private keys on a different server that is not connected directly to
-  production systems. (SX, pycoin)
-* Altcoin use. Many of the Bitcoin libraries aren't sufficiently general to
-  allow using them for Altcoins, and so they get forked and patches and tweaks
-  get scattered everywhere. (pycoin is generalized, stratum-mining is forked
-  endlessly)
-* Survey or special purpose nodes. These are node implementations that want to
-  do something that is a significant departure from Core. (python-bitcoinlib,
-  pycoinnet, electrum)
-* Research and Analysis. These needs are wide and varied, but something like
-  python-bitcoinlib unusually covers it well.
-
 So I would like make an RFC of sorts, attempting to define requirements for a
 community maintained library that satisfies most general use cases. Below is a
 very rough outline of my goals and a possible implementation.
@@ -59,7 +43,7 @@ self-sustaining. That is, that it was consistently getting better due to
 contributions from a wide range of individuals, instead of a single central
 maintainer. The sections below should be guided by this.
 
-At it's core, any successful open source software is made by it's community,
+At it's core, any successful open source project is made by it's community,
 but communities don't just pop up when there's code. I think the most important
 thing missing in most of the aforementioned projects are steps to facilitate
 and actively encourage community, so I've outlined here what I think would help
@@ -136,6 +120,25 @@ Proposed Implementation
 > is basically a brain dump, and an *end point*. The actual implementation
 > isn't particularly important to me as long as it meets the above goals of
 > being logically organized with a nice API.
+
+Existing Work
+--------------
+
+Below I've attempted to identify the major use cases, and roughly which
+libraries are currently meeting each use case.
+
+* Wallet Management. For increased security it's a logical step to store
+  private keys on a different server that is not connected directly to
+  production systems. (SX, pycoin)
+* Altcoin use. Many of the Bitcoin libraries aren't sufficiently general to
+  allow using them for Altcoins, and so they get forked and patches and tweaks
+  get scattered everywhere. (pycoin is generalized, stratum-mining is forked
+  endlessly)
+* Survey or special purpose nodes. These are node implementations that want to
+  do something that is a significant departure from Core. (python-bitcoinlib,
+  pycoinnet, electrum)
+* Research and Analysis. These needs are wide and varied, but something like
+  python-bitcoinlib unusually covers it well.
 
 Feature Summary
 ---------------
