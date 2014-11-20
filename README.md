@@ -3,13 +3,13 @@
 
 I've been working with Bitcoin and cryptocurrency in general for about 9 months
 now, and in that time I've really felt the want for a quality toolkit that is
-flexible and well documented. Certainly python-bitcoinlib is about the closest
-I've found. However, the numerous other projects with part way overlapping
-goals in this space make for a fragmented ecosystem and I believe hinder
-cryptocurrency adoption by making it less approachable for developers. For
-example, in the Python realm I know of several projects that achieve very
+flexible and well documented. The numerous other projects with part way
+overlapping goals in this space make for a fragmented ecosystem and I believe
+hinder cryptocurrency adoption by making it less approachable for developers.
+For example, in the Python realm I know of several projects that achieve very
 similar goals:
 
+* python-bitcoinlib is probably the most well known/general, but it Bitcoin only
 * stratum-mining, probably the most used stratum software uses its own custom
   serialization libs.
 * p2pool uses yet another set custom made tools
@@ -25,8 +25,8 @@ of:
 * @conformal GoLang libraries they built
 * bitcoinj
 
-I believe that establishing a library of sufficient flexibility and
-documentation would gradually lead to a unification of effort among developers
+I believe that establishing a library that is sufficiently flexible and
+generic would gradually lead to a unification of effort among developers
 in this space, leading to a defacto general purpose toolkit. I think this is a
 really important foundation for spreading cryptocurrency adoption, since
 developers make applications, and in turn more applications bring more users.
@@ -44,35 +44,88 @@ libraries are meeting each use case.
 * Survey or special purpose nodes. These are node implementations that want to
   do something that is a significant departure from Core. (python-bitcoinlib,
   pycoinnet, electrum)
-* Reasearch and Analysis. These needs are wide and varied, but something like
+* Research and Analysis. These needs are wide and varied, but something like
   python-bitcoinlib unusually covers it well.
 
 So I would like make an RFC of sorts, attempting to define requirements for a
 community maintained library that satisfies most general use cases. Below is a
 very rough outline of my goals.
 
-Language Choice
----------------
-
-I believe that Python makes an excellent choice, given:
-
-* Wide adoption/use in many current crypto projects.
-* Good cross platform capabilities.
-* Good knowledge base across proposed maintainers of this project.
-
-The main drawbacks include:
-
-* Cannot be used as a library in other languages like a lower level language
-  such as Rust, C/C++.
-* Poor concurrency support.
-* Headaches with 2.7->3 bytes/strings/Unicode.
-
-While the drawbacks are real, I think the best course of action would be to
-build the library in Python, then slowly port chunks of functionality to a
-lower level library and use them in Python via FFI.
-
 Goals
 ===============
+The ultimate goal here would be to develop an open source cryptocurrency
+toolkit that has enough users and value that it was relatively
+self-sustaining. That is, that it was consistently getting better due to
+contributions from a wide range of individuals, instead of a single central
+maintainer. The sections below should be guided by this.
+
+At it's core, any successful open source software is made by it's community,
+but communities don't just pop up when there's code. I think the most important
+thing missing in most of the aforementioned projects are steps to facilitate
+and actively encourage community, so I've outlined here what I think would help
+make that happen.
+
+Encouraging contribution
+------------------------
+Steps that should be taken to make contribution as easy as possible.
+
+**Quality Assurance**
+The maintainers job is essentially maintaining quality of the code base which
+involves reviewing contributions. The easier this is the more quickly
+contributions will get accepted, and thus the more likely people are to
+contribute again. Or on the flip side, if review isn't sufficient (sloppy) then
+the quality of code base will decline and it's user base (health) will decline
+as well.
+
+Main tasks included
+* Making new code doesn't break things (Automated testing with TravisCI)
+* Ensuring there's sufficient testing coverage (Coveralls)
+* Maintaining uniform coding standards (Manually with PyLint or Flake8)
+
+**Welcoming Attitude**
+Open source can be rough sometimes, depending on the culture of the project.
+Ideally the maintainers should be open and supporting, finding more eloquent
+ways to tell someone "this is shit".
+
+**Contributors List**
+Thanking contributors in release announcements and adding them to contributors
+docs will help make contributors feel welcomed and appreciated.
+
+Easing (New) Developer Experience
+---------------------------------
+The easier a library is to use, the more people will use it.
+
+> “If a new user has a bad time, it’s a bug” - Logstash maintainer Jordan Sissel
+
+**Documentation**
+The docs should be thorough and cover common use cases well. Actively
+requesting documentation contributions will help. ReadTheDocs has an edit on
+Github button which is great.
+
+**Organization**
+Having a logical project layout makes exploring the code much more
+straightforward. This isn't a problem for small projects, but becomes
+increasingly problematic as projects grow. Refactoring has a high (end user)
+cost, so a bit of though early on helps prevent problems down the road.
+
+**Coding Standards**
+Readability is important for a project that expects lots of eyes on the
+code base. Establishing and sticking to standards helps a lot. How to do this is
+well covered in other places, so I won't dwell on it here.
+
+**Answer Questions**
+IRC, mailing lists, or Github issues.
+
+**API**
+Exposing a logical and well thought out API makes using the package pleasant,
+leading to greater adoption. Flask, Requests, etc are good examples. Actually
+building things with the library helps highlight the pain points.
+
+Proposed Implementation
+=======================
+
+*Note*: These ideas still all very green, and very open to suggestions and
+changes. This is basically a brain dump, and an ideal *end point*.
 
 Feature Summary
 ---------------
@@ -108,29 +161,6 @@ Feature Summary
   implements (for instance calculating fee amounts, or generating block
   templates)
 
-Community Support
------------------------
-
-In order to allow the project to become mainstream, certain efforts should be
-made to facilitate adoption and contribution.
-
-* Automated testing and testing code coverage checks. This eases the burden on
-  the maintainers and keeps the repository less cluttered by catching obviously
-  sloppy contributions.
-* Established coding standards/conventions. Code bases that vary their coding
-  standard can be frustrating to read and work on.
-* Quality documentation. This is probably the biggest lacking area in
-  cryptocurrency right now. There's a standard of almost no documentation on
-  everything, making getting into crypto a big hurdle. Varying levels of
-  stricness could be enforced here for contributions.
-* Positive general attitude towards contributors/users, and a goal of making
-  comprehensible documentation.
-
-Proposed Implementation
-=======================
-
-*Note*: These ideas still all very green, and very open to suggestions and changes.
-
 Module Layout
 -----------------
 
@@ -148,7 +178,7 @@ Module Layout
       worth the minimal effort)
 * Wallet management (not core wallets)
 * Network definitions - A wrapper class that specifies all classes to use for a
-  specific network
+  specific network. [POC here](https://github.com/icook/cckit)
 
 Rough Timeline
 -----------------
@@ -173,23 +203,6 @@ Rough Timeline
 * Write/adapt a blockchain class. Possibly similar to SAX XML parsing.
 * Write use case examples, improve documentation
 
-Community Support
------------------
-
-* Automated testing performed by TravisCI. Prevent merging breaking
-  contributions.
-* Coverage checking with Coveralls. New features should have at least basic
-  coverage, and keeping an eye on overall coverage is made much easier.
-* ReadTheDocs for documentation hosting. When properly setup
-  it shouldn't really need to be touched.
-* Encourage users to add examples and documentation when possible, lightening
-  the load on maintainers.
-* Coding style enforced with PyLint run as part of the test suite. Pick a
-  sparse set of rules to be enforced, but have them enforced absolutely.
-  (NOTE: This is what I'm least sure about, since absolute enforcement is a bit
-  strong, but otherwise I think it'll just be ignored. There's no service like
-  Coveralls for PyLint.)
-
 Misc
 =======================
 
@@ -199,7 +212,7 @@ Maintainers
 Ideally I'd like to get the support of a few other developers who have
 experience in this area and are willing to help either move a project in this
 direction or create one from scratch. It is also possible that the project
-could be crowdfunded to an extent, although explaining its value to
+could be crowd-funded to an extent, although explaining its value to
 cryptocurrency users is a challenge.
 
 License
@@ -211,3 +224,23 @@ project would end up taking bits and pieces from many diverse projects, so it's
 unclear the problems that might create.
 
 In general BSD or similar would be preferred over GPL or similar.
+
+Language Choice
+---------------
+
+I believe that Python makes an excellent choice, given:
+
+* Wide adoption/use in many current crypto projects.
+* Good cross platform capabilities.
+* Good knowledge base across proposed maintainers of this project.
+
+The main drawbacks include:
+
+* Cannot be used as a library in other languages like a lower level language
+  such as Rust, C/C++.
+* Poor concurrency support.
+* Headaches with 2.7->3 bytes/strings/Unicode.
+
+While the drawbacks are real, I think the best course of action would be to
+build the library in Python, then slowly port chunks of functionality to a
+lower level library and use them in Python via FFI.
