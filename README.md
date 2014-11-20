@@ -133,7 +133,9 @@ Proposed Implementation
 
 > ### Note
 > These ideas still all very green, and open to suggestions and changes.  This
-> is basically a brain dump, and an ideal *end point*.
+> is basically a brain dump, and an *end point*. The actual implementation
+> isn't particularly important to me as long as it meets the above goals of
+> being logically organized with a nice API.
 
 Feature Summary
 ---------------
